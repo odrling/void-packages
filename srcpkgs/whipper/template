@@ -1,0 +1,25 @@
+# Template file for 'whipper'
+pkgname=whipper
+version=0.7.0
+revision=1
+build_style=python2-module
+pycompile_module="whipper"
+hostmakedepends="python-devel python-setuptools"
+makedepends="python-devel python-setuptools libsndfile-devel"
+depends="python python-pycdio python-cddb python-gobject2 python-musicbrainzngs python-requests cdparanoia cdrdao flac libsndfile mutagen sox"
+short_desc="CD-DA ripper preferring accuracy over speed (Python2)"
+maintainer="odrling <florianbadie@odrling.xyz>"
+license="GPL-3"
+homepage="https://github.com/JoeLametta/whipper"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=cf5d025d87b9c3db17a9c69732f7d90754f24432ad3dd147c0af40b8ed1cfcef
+
+pre_build() {
+	cd $wrksrc/src
+	make CC=$CC
+}
+
+pre_install() {
+	cd $wrksrc/src
+	make install DESTDIR=$DESTDIR PREFIX="/usr"
+}

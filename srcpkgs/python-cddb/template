@@ -1,0 +1,17 @@
+# Template file for 'python-cddb'
+pkgname=python-cddb
+version=1.4
+revision=1
+noarch=yes
+build_style=python2-module
+wrksrc="CDDB-${version}"
+pycompile_module="CDDB.py DiscID.py"
+hostmakedepends="python-devel python-setuptools"
+makedepends="python-devel python-setuptools"
+depends="python"
+short_desc="Python2 interface to CD-IDs and FreeDB"
+maintainer="odrling <florianbadie@odrling.xyz>"
+license="GPL-3"
+homepage="http://cddb-py.sourceforge.net/"
+distfiles="${homepage}/CDDB-${version}.tar.gz"
+checksum=bcd0f2f21848f2fcd692c542f124ec3e1414391ddeb6114f6f7bc5724a831d25

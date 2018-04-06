@@ -1,0 +1,28 @@
+# Template file for 'python-cdio'
+pkgname=python-pycdio
+version=2.0.0
+revision=1
+noarch=yes
+build_style=python-module
+wrksrc="pycdio-${version}"
+pycompile_module="pycdio.py cdio.py iso9660.py pyiso9660.py"
+hostmakedepends="python-devel python3-devel python-setuptools python3-setuptools swig pkg-config"
+makedepends="python-devel python3-devel python-setuptools python3-setuptools libcdio-devel"
+depends="python"
+short_desc="Python2 interface to libcdio"
+maintainer="odrling <florianbadie@odrling.xyz>"
+license="GPL-3"
+homepage="https://www.gnu.org/software/libcdio"
+distfiles="${GNU_SITE}/libcdio/pycdio-${version}.tar.gz"
+checksum=128e9ae12233f7e5a9a2be6d03d2d836a04d99b44c41dc9312ca14ea2a0530a8
+
+python3-pycdio_package() {
+	noarch=yes
+	depends="python3"
+	short_desc="${short_desc/Python2/Python3}"
+	pycompile_module="pycdio.py cdio.py iso9660.py pyiso9660.py"
+
+	pkg_install() {
+		vmove usr/lib/python3*
+	}
+}
